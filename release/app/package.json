@@ -1,0 +1,18 @@
+{
+  "name": "programmer-browser",
+  "version": "0.1.9",
+  "description": "A fast-searching and space-saving browser specially designed for programmers.",
+  "license": "MIT",
+  "author": {
+    "name": "yessGlory17",
+    "email": "ozgurkurucan337@gmail.com",
+    "url": "https://github.com/yessGlory17/programmer-browser"
+  },
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "electron-rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run electron-rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {}
+}
