@@ -1,6 +1,7 @@
 import { RepeatIcon } from '@chakra-ui/icons';
 import {
   AccordionButton,
+  AccordionIcon,
   AccordionItem,
   AccordionPanel,
   Box,
@@ -21,10 +22,7 @@ type BrowserCollapseTypes = {
   name: string;
   tabUrl: string;
   tabId: string;
-  onOpen: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index: number
-  ) => void;
+  onOpen: (e: React.MouseEvent<SVGElement, MouseEvent>, index: number) => void;
   index: number;
 };
 
@@ -148,7 +146,11 @@ const BrowserCollapse = ({
                 icon={<Icon as={AiOutlineClose} _hover={{ color: 'red' }} />}
               />
 
-              {/* <AccordionIcon /> */}
+              <AccordionIcon
+                onClick={(e) => {
+                  onOpen(e, index);
+                }}
+              />
             </AccordionButton>
           </FindInPage>
         </h2>

@@ -33,12 +33,18 @@ export const SearchContext = createContext<Partial<SearchContextProps>>({});
 export const SearchContextProvider = ({
   children,
 }: SearchContextProviderProps) => {
-  const [url, setUrl] = useState<string>('google');
+  const [url, setUrl] = useState<string>('http://google.com');
   const [keyword, setKeyword] = useState<string>('');
   const [searchEngine, setSearchEngine] = useState<string>(
     'https://www.google.com/search?q='
   );
-  const [tabs, setTabs] = useState<Tab[] | undefined>([]);
+  const [tabs, setTabs] = useState<Tab[] | undefined>([
+    {
+      tabId: uuidv4(),
+      keyword: 'google',
+      url: 'https://www.google.com.vn/',
+    },
+  ]);
 
   // const selectSearchEngine = (event: Event) => setSearchEngine(event.target.value);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -71,7 +77,7 @@ export const SearchContextProvider = ({
     setTabs(result);
   };
 
-  //Close All Tabs Shortcut: Alt+X
+  // Close All Tabs Shortcut: Alt+X
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
     setTabs([]);
   });

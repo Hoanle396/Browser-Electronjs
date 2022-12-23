@@ -81,6 +81,8 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
+    resizable: true,
+    closable: true,
     width: dimensions.width,
     height: dimensions.height,
     transparent: false,
@@ -106,7 +108,7 @@ const createWindow = async () => {
 
   positioner = new Positoner(mainWindow);
   positioner.move('topRight');
-  mainWindow.loadURL('https://www.google.com');
+  mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
     if (!mainWindow) {
